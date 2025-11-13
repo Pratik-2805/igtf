@@ -1,33 +1,40 @@
-"use client"
+"use client";
 
-import type React from "react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+const API_URL = "http://127.0.0.1:8000/api/token/"; // Django JWT login endpoint
 
 export default function AdminLoginPage() {
-  const router = useRouter()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
 
-    // In production, validate against your database
-    if (username === "admin" && password === "admin123") {
-      localStorage.setItem("isAdminLoggedIn", "true")
-      localStorage.setItem("adminUsername", username)
-      router.push("/admin/dashboard")
-    } else if (username === "manager1" && password === "manager123") {
-      // Example regular admin
-      localStorage.setItem("isAdminLoggedIn", "true")
-      localStorage.setItem("adminUsername", username)
-      router.push("/admin/dashboard")
-    } else {
-      setError("Invalid credentials")
+    try {
+      const res = await fetch('http://localhost:8000/api/token/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem('accessToken', data.access);
+        localStorage.setItem('refreshToken', data.refresh);
+        router.push('/admin/dashboard');
+      } else {
+        setError('Invalid credentials');
+      }
+    } catch (err) {
+      setError('Login failed. Please try again.');
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -35,7 +42,9 @@ export default function AdminLoginPage() {
         <div className="text-center mb-8">
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Indo-Global-Trade-Fair-Logo--eqw9QSs9yPlSNoi4uIQ58jPR2grztu.webp"
-            alt="IGTF Logo" className="h-16 w-auto mx-auto mb-6" />
+            alt="IGTF Logo"
+            className="h-16 w-auto mx-auto mb-6"
+          />
           <h1 className="font-serif text-3xl mb-2">Admin Portal</h1>
           <p className="text-muted-foreground">Sign in to access the admin dashboard</p>
         </div>
@@ -97,10 +106,9 @@ export default function AdminLoginPage() {
         </div>
 
         <div className="text-center text-xs text-muted-foreground mt-6 space-y-1">
-          <p>Main Admin: admin / admin123</p>
-          <p>Regular Admin: manager1 / manager123</p>
+          <p>Use your Django Admin credentials</p>
         </div>
       </div>
     </div>
-  )
+  );
 }
