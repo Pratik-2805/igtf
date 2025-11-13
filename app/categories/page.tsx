@@ -1,170 +1,178 @@
 "use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { ChatBot } from "@/components/chat-bot";
 
 export default function CategoriesPage() {
   const categories = [
-    {
-      name: "Hardware & Tools",
-      description:
-        "Industrial and commercial hardware, power tools, hand tools, and equipment",
-      icon: "🔧",
-    },
-    {
-      name: "Toys",
-      description:
-        "Educational toys, electronic toys, games, and entertainment products",
-      icon: "🧸",
-    },
-    {
-      name: "Chemical",
-      description:
-        "Industrial chemicals, specialty chemicals, and chemical products",
-      icon: "⚗️",
-    },
-    {
-      name: "Electronics & Components",
-      description:
-        "Electronic components, consumer electronics, and digital devices",
-      icon: "💻",
-    },
-    {
-      name: "Auto Parts",
-      description: "Automotive parts, accessories, and vehicle components",
-      icon: "🚗",
-    },
-    {
-      name: "Construction Material",
-      description:
-        "Building materials, construction equipment, and architectural products",
-      icon: "🏗️",
-    },
-    {
-      name: "Agriculture & Equipment's",
-      description:
-        "Agricultural machinery, farming equipment, and agri-products",
-      icon: "🌾",
-    },
-    {
-      name: "Plastic & Packaging",
-      description:
-        "Plastic products, packaging materials, and container solutions",
-      icon: "📦",
-    },
-    {
-      name: "Sports",
-      description: "Sports equipment, fitness gear, and athletic accessories",
-      icon: "⚽",
-    },
-    {
-      name: "Food & Beverage",
-      description: "Food products, beverages, and culinary equipment",
-      icon: "🍽️",
-    },
-    {
-      name: "Pharma",
-      description:
-        "Pharmaceutical products, medicines, and healthcare solutions",
-      icon: "💊",
-    },
-    {
-      name: "Surgical Devices",
-      description:
-        "Medical devices, surgical instruments, and healthcare equipment",
-      icon: "🏥",
-    },
-    {
-      name: "Gifting & Stationary",
-      description: "Gift items, stationery products, and office supplies",
-      icon: "🎁",
-    },
-    {
-      name: "Furniture",
-      description: "Home and office furniture, decor, and furnishing solutions",
-      icon: "🪑",
-    },
-    {
-      name: "Kitchen Wear",
-      description: "Kitchenware, cooking utensils, and culinary accessories",
-      icon: "🍳",
-    },
-    {
-      name: "Spices",
-      description: "Spices, herbs, and food ingredients",
-      icon: "🌶️",
-    },
-    {
-      name: "Footwear",
-      description: "Shoes, sandals, and footwear accessories",
-      icon: "👟",
-    },
-    {
-      name: "Home Décor",
-      description:
-        "Home decoration items, interior accessories, and lifestyle products",
-      icon: "🏡",
-    },
+    { name: "Spices", imageUrl: "/categories/spices.webp" },
+    { name: "Footwear", imageUrl: "/categories/footwear.webp" },
+    { name: "Toys", imageUrl: "/categories/toys.webp" },
+    { name: "Chemical", imageUrl: "/categories/chemicals.webp" },
+    { name: "Hardware & Tools", imageUrl: "/categories/hardware.webp" },
+    { name: "Electronics & Components", imageUrl: "/categories/electronics.webp" },
+    { name: "Auto Parts", imageUrl: "/categories/auto.webp" },
+    { name: "Construction Material", imageUrl: "/categories/construction.webp" },
+    { name: "Agriculture & Equipment's", imageUrl: "/categories/agriculture.webp" },
+    { name: "Plastic & Packaging", imageUrl: "/categories/plastic.webp" },
+    { name: "Sports", imageUrl: "/categories/sports.webp" },
+    { name: "Food & Beverage", imageUrl: "/categories/food.webp" },
+    { name: "Pharmaceutical Products", imageUrl: "/categories/pharma.webp" },
+    { name: "Surgical Devices", imageUrl: "/categories/surgical.webp" },
+    { name: "Gifting & Stationary", imageUrl: "/categories/gifting.webp" },
+    { name: "Furniture", imageUrl: "/categories/furniture.webp" },
+    { name: "Kitchenware", imageUrl: "/categories/kitchenware.webp" },
+    { name: "Home Décor", imageUrl: "/categories/home.webp" },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % categories.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    setOverlayVisible(false);
+    const timer = setTimeout(() => setOverlayVisible(true), 300);
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
+
+  const getSlideStyle = (index: number) => {
+    const offset = index - activeIndex;
+    const total = categories.length;
+    const half = Math.floor(total / 2);
+    let position = offset;
+
+    if (offset > half) position = offset - total;
+    if (offset < -half) position = offset + total;
+
+    const translateX = position * 160;
+    const scale = 1 - Math.abs(position) * 0.1;
+    const zIndex = 50 - Math.abs(position);
+    const opacity = Math.abs(position) > 4 ? 0 : 1;
+
+    return {
+      transform: `translateX(${translateX}px) scale(${scale})`,
+      zIndex,
+      opacity,
+      transition: "all 0.8s ease",
+    };
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <div className="pt-20">
+      <div className="pt-15">
         {/* Hero Section */}
-        <section className="relative py-32 px-4 bg-gradient-to-b from-muted/30 to-background">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif text-5xl md:text-6xl mb-6 animate-fade-in">
-              Exhibition Categories
-            </h1>
-            <p className="text-xl text-muted-foreground animate-fade-in-delay-1">
-              Explore 16 dynamic sectors representing diverse industries
-            </p>
-          </div>
+        <section className="relative py-12 px-4 bg-gradient-to-b from-muted/30 to-background text-center">
+          <h1 className="font-serif text-5xl md:text-6xl mb-4">Exhibition Categories</h1>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            Explore 16 dynamic sectors representing diverse industries
+          </p>
         </section>
 
-        {/* Categories Ticker */}
-        <section className="py-8 bg-primary text-primary-foreground overflow-hidden">
-          <div className="whitespace-nowrap animate-scroll">
-            <span className="inline-block px-8 text-lg">
-              Hardware & Tools | Toys | Chemical | Electronics & Components |
-              Auto Parts | Construction Material | Agriculture & Equipment's |
-              Plastic & Packaging | Sports | Food & Beverage | Pharma | Surgical
-              Devices | Gifting & Stationary | Furniture | Kitchen Wear | Spices
-              | Footwear | Home Décor |
-            </span>
-            <span className="inline-block px-8 text-lg">
-              Hardware & Tools | Toys | Chemical | Electronics & Components |
-              Auto Parts | Construction Material | Agriculture & Equipment's |
-              Plastic & Packaging | Sports | Food & Beverage | Pharma | Surgical
-              Devices | Gifting & Stationary | Furniture | Kitchen Wear | Spices
-              | Footwear | Home Décor |
-            </span>
-          </div>
-        </section>
+        {/* Animation Keyframes */}
+        <style jsx global>{`
+        @keyframes slideUpFade {
+          0% {
+            opacity: 0;
+            transform: translateY(15px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slideUpFade {
+          animation: slideUpFade 0.6s ease-out forwards;
+        }
 
-        {/* Categories Grid */}
-        <section className="py-20 px-4 bg-background">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categories.map((category, index) => (
-                <div
-                  key={category.name}
-                  className="bg-muted/30 p-6 rounded-lg scroll-animate-card hover:-translate-y-2 transition-all duration-300 hover:shadow-xl border border-transparent hover:border-primary/20"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <div className="text-4xl mb-4">{category.icon}</div>
-                  <h3 className="font-serif text-xl mb-3">{category.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {category.description}
-                  </p>
-                </div>
-              ))}
+        @keyframes fadeInOverlay {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .animate-fadeInOverlay {
+          animation: fadeInOverlay 0.5s ease-in forwards;
+        }
+      `}</style>
+
+        {/* Carousel Section */}
+        <section className="py-10 sm:py-12 bg-gradient-to-b from-[#FEF9F4] to-[#E59E54]/30 relative overflow-hidden">
+          <div className="relative flex items-center justify-center h-[380px] sm:h-[460px] md:h-[520px]">
+            <div className="relative w-full flex items-center justify-center h-full">
+              {categories.map((cat, i) => {
+                const isActive = i === activeIndex;
+                return (
+                  <div
+                    key={i}
+                    className="absolute rounded-2xl overflow-hidden shadow-lg transition-transform duration-700 w-[200px] h-[280px] sm:w-[260px] sm:h-[360px] md:w-[300px] md:h-[430px]"
+                    style={getSlideStyle(i)}
+                  >
+                    <Image
+                      src={cat.imageUrl}
+                      alt={cat.name}
+                      fill
+                      sizes="(max-width: 640px) 200px, (max-width: 1024px) 260px, 300px"
+                      priority={i < 3}
+                      className={`object-cover rounded-2xl transition-all duration-700 ${isActive ? "brightness-100" : "brightness-75 blur-[1px]"
+                        }`}
+                    />
+
+                    {isActive && (
+                      <>
+                        {overlayVisible && (
+                          <div className="absolute inset-0 bg-black/40 animate-fadeInOverlay" />
+                        )}
+                        {overlayVisible && (
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent py-3 sm:py-4 animate-slideUpFade">
+                            <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold text-center drop-shadow-lg">
+                              {cat.name}
+                            </h3>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
             </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() =>
+                setActiveIndex(
+                  (prev) => (prev - 1 + categories.length) % categories.length
+                )
+              }
+              className="absolute left-4 sm:left-8 md:left-10 top-1/2 -translate-y-1/2 bg-[#002B5B] text-white rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-[#003C7B] transition z-50 shadow-md"
+            >
+              &#8249;
+            </button>
+
+            <button
+              onClick={() =>
+                setActiveIndex((prev) => (prev + 1) % categories.length)
+              }
+              className="absolute right-4 sm:right-8 md:right-10 top-1/2 -translate-y-1/2 bg-[#002B5B] text-white rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-[#003C7B] transition z-50 shadow-md"
+            >
+              &#8250;
+            </button>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <section className="py-20 px-4 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl mb-6">
@@ -172,7 +180,7 @@ export default function CategoriesPage() {
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Register as an exhibitor in your category and connect with
-              thousands of trade buyers from around the world
+              thousands of trade buyers from around the world.
             </p>
             <a href="/exhibition">
               <button className="bg-primary text-primary-foreground px-8 py-3 rounded-md hover:bg-primary/90 transition-all duration-500 font-medium text-lg">
@@ -182,80 +190,10 @@ export default function CategoriesPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-background border-t">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <h4 className="font-serif text-xl mb-4">
-                  Indo Global Trade Fair
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Connecting Indian Enterprise with the World through strategic
-                  B2B trade platforms.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>
-                    <a
-                      href="/"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/about"
-                      className="hover:text-primary transition-colors"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/exhibition"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Exhibition
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/gallery"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Gallery
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Contact</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Email: info@indoglobaltradefair.com</li>
-                  <li>Phone: +91 XXX XXX XXXX</li>
-                  <li>
-                    <a
-                      href="/career"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Career Opportunities
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center pt-8 border-t text-muted-foreground text-sm">
-              <p>© 2025 Indo Global Trade Fair. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </div>
+        <Footer />
+        <ChatBot />
 
-      <ChatBot />
+      </div>
     </div>
   );
 }

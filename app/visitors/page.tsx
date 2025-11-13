@@ -95,13 +95,116 @@ export default function VisitorsPage() {
     <div className="min-h-screen">
       <Navbar />
       <div className="pt-20">
-        {/* Hero Section */}
-        <section className="relative py-32 px-4 bg-gradient-to-b from-muted/30 to-background">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif text-5xl md:text-6xl mb-6">Visit IGTF</h1>
-            <p className="text-xl text-muted-foreground">
-              Register now for exclusive access to India&apos;s premier B2B trade fair
-            </p>
+        {/* Why Visit */}
+        <section className="py-20 px-4 bg-background">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-serif text-4xl md:text-5xl text-center mb-16 scroll-animate">
+              Why Visit IGTF?
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-12 mb-16">
+              <div className="space-y-6 scroll-animate-left">
+                <h3 className="font-serif text-2xl">For Trade Buyers</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Source directly from 400+ manufacturers and exporters
+                      across 16 industry sectors
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Discover new products, innovations, and cutting-edge
+                      solutions for your business
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Network with industry leaders and establish valuable
+                      business partnerships
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Compare prices, quality, and terms from multiple suppliers
+                      in one location
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-6 scroll-animate-right">
+                <h3 className="font-serif text-2xl">
+                  For Industry Professionals
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Stay updated with the latest industry trends and market
+                      insights
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Attend seminars and workshops by industry experts
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Explore career opportunities and business collaborations
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-muted-foreground">
+                      Connect with global trade professionals from 40+ countries
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Registration Benefits */}
+        <section className="py-20 px-4 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-serif text-4xl md:text-5xl text-center mb-16 scroll-animate">
+              Visitor Registration Benefits
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-background p-8 rounded-lg scroll-animate-card hover:-translate-y-2 transition-all duration-300 shadow-lg">
+                <h4 className="font-serif text-xl mb-4">Free Entry Pass</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Get complimentary access to all three days of the exhibition
+                  with pre-registration
+                </p>
+              </div>
+
+              <div className="bg-background p-8 rounded-lg scroll-animate-card animation-delay-100 hover:-translate-y-2 transition-all duration-300 shadow-lg">
+                <h4 className="font-serif text-xl mb-4">Priority Access</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Skip the queues with fast-track entry and priority access to
+                  special sessions
+                </p>
+              </div>
+
+              <div className="bg-background p-8 rounded-lg scroll-animate-card animation-delay-200 hover:-translate-y-2 transition-all duration-300 shadow-lg">
+                <h4 className="font-serif text-xl mb-4">Event Updates</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Receive exclusive updates about exhibitors, floor plans, and
+                  special events
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

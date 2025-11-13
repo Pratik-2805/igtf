@@ -1,6 +1,7 @@
 "use client";
 import { Navbar } from "@/components/navbar";
 import { ChatBot } from "@/components/chat-bot";
+import { Footer } from "@/components/footer";
 
 export default function CareerPage() {
   return (
@@ -261,80 +262,8 @@ export default function CareerPage() {
             </form>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-background border-t">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <h4 className="font-serif text-xl mb-4">
-                  Indo Global Trade Fair
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Connecting Indian Enterprise with the World through strategic
-                  B2B trade platforms.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>
-                    <a
-                      href="/"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/about"
-                      className="hover:text-primary transition-colors"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/exhibition"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Exhibition
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/categories"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Categories
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Contact</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Email: info@indoglobaltradefair.com</li>
-                  <li>Phone: +91 XXX XXX XXXX</li>
-                  <li>
-                    <a
-                      href="/gallery"
-                      className="hover:text-primary transition-colors"
-                    >
-                      Gallery
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center pt-8 border-t text-muted-foreground text-sm">
-              <p>© 2025 Indo Global Trade Fair. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
       </div>
-
+      <Footer />
       <ChatBot />
     </div>
   );
