@@ -265,13 +265,13 @@ export default function AdminDashboard() {
       events.map((event) =>
         event.id === editingItem.id
           ? {
-              ...formData,
-              id: event.id,
-              exhibitors: Number.parseInt(formData.exhibitors),
-              buyers: Number.parseInt(formData.buyers),
-              countries: Number.parseInt(formData.countries),
-              sectors: Number.parseInt(formData.sectors),
-            }
+            ...formData,
+            id: event.id,
+            exhibitors: Number.parseInt(formData.exhibitors),
+            buyers: Number.parseInt(formData.buyers),
+            countries: Number.parseInt(formData.countries),
+            sectors: Number.parseInt(formData.sectors),
+          }
           : event,
       ),
     )
@@ -321,10 +321,10 @@ export default function AdminDashboard() {
       gallery.map((img) =>
         img.id === editingItem.id
           ? {
-              ...formData,
-              id: img.id,
-              displayOrder: Number.parseInt(formData.displayOrder) || img.displayOrder, // Updated display order
-            }
+            ...formData,
+            id: img.id,
+            displayOrder: Number.parseInt(formData.displayOrder) || img.displayOrder, // Updated display order
+          }
           : img,
       ),
     )
@@ -430,7 +430,9 @@ export default function AdminDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/images/indo-global-trade-fair-logo.webp" alt="IGTF Logo" className="h-10 sm:h-12 w-auto" />
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Indo-Global-Trade-Fair-Logo--eqw9QSs9yPlSNoi4uIQ58jPR2grztu.webp"
+                alt="IGTF Logo" className="h-10 sm:h-12 w-auto" />
               <div className="sm:hidden">
                 <h1 className="font-serif text-sm leading-tight">Indo Global Trade Fair</h1>
                 <p className="text-xs opacity-90">Admin Panel</p>
@@ -478,52 +480,47 @@ export default function AdminDashboard() {
             <div className="flex gap-1">
               <button
                 onClick={() => setActiveTab("registrations")}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === "registrations"
-                    ? "bg-primary-foreground text-primary border-b-2 border-primary"
-                    : "text-primary-foreground/70 hover:text-primary-foreground"
-                }`}
+                className={`px-6 py-3 font-medium transition-colors ${activeTab === "registrations"
+                  ? "bg-primary-foreground text-primary border-b-2 border-primary"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  }`}
               >
                 Registrations
               </button>
               <button
                 onClick={() => setActiveTab("events")}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === "events"
-                    ? "bg-primary-foreground text-primary border-b-2 border-primary"
-                    : "text-primary-foreground/70 hover:text-primary-foreground"
-                }`}
+                className={`px-6 py-3 font-medium transition-colors ${activeTab === "events"
+                  ? "bg-primary-foreground text-primary border-b-2 border-primary"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  }`}
               >
                 Events
               </button>
               <button
                 onClick={() => setActiveTab("categories")}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === "categories"
-                    ? "bg-primary-foreground text-primary border-b-2 border-primary"
-                    : "text-primary-foreground/70 hover:text-primary-foreground"
-                }`}
+                className={`px-6 py-3 font-medium transition-colors ${activeTab === "categories"
+                  ? "bg-primary-foreground text-primary border-b-2 border-primary"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  }`}
               >
                 Categories
               </button>
               <button
                 onClick={() => setActiveTab("gallery")}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === "gallery"
-                    ? "bg-primary-foreground text-primary border-b-2 border-primary"
-                    : "text-primary-foreground/70 hover:text-primary-foreground"
-                }`}
+                className={`px-6 py-3 font-medium transition-colors ${activeTab === "gallery"
+                  ? "bg-primary-foreground text-primary border-b-2 border-primary"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  }`}
               >
                 Gallery & Images
               </button>
               {currentAdminRole === "main" && (
                 <button
                   onClick={() => setActiveTab("admins")}
-                  className={`px-6 py-3 font-medium transition-colors ${
-                    activeTab === "admins"
-                      ? "bg-primary-foreground text-primary border-b-2 border-primary"
-                      : "text-primary-foreground/70 hover:text-primary-foreground"
-                  }`}
+                  className={`px-6 py-3 font-medium transition-colors ${activeTab === "admins"
+                    ? "bg-primary-foreground text-primary border-b-2 border-primary"
+                    : "text-primary-foreground/70 hover:text-primary-foreground"
+                    }`}
                 >
                   Admin Management
                 </button>
@@ -541,11 +538,10 @@ export default function AdminDashboard() {
                   setActiveTab("registrations")
                   setIsMobileMenuOpen(false)
                 }}
-                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "registrations"
-                    ? "bg-primary-foreground text-primary"
-                    : "text-primary-foreground/90 hover:bg-primary-foreground/10"
-                }`}
+                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${activeTab === "registrations"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90 hover:bg-primary-foreground/10"
+                  }`}
               >
                 Registrations
               </button>
@@ -554,11 +550,10 @@ export default function AdminDashboard() {
                   setActiveTab("events")
                   setIsMobileMenuOpen(false)
                 }}
-                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "events"
-                    ? "bg-primary-foreground text-primary"
-                    : "text-primary-foreground/90 hover:bg-primary-foreground/10"
-                }`}
+                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${activeTab === "events"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90 hover:bg-primary-foreground/10"
+                  }`}
               >
                 Events
               </button>
@@ -567,11 +562,10 @@ export default function AdminDashboard() {
                   setActiveTab("categories")
                   setIsMobileMenuOpen(false)
                 }}
-                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "categories"
-                    ? "bg-primary-foreground text-primary"
-                    : "text-primary-foreground/90 hover:bg-primary-foreground/10"
-                }`}
+                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${activeTab === "categories"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90 hover:bg-primary-foreground/10"
+                  }`}
               >
                 Categories
               </button>
@@ -580,11 +574,10 @@ export default function AdminDashboard() {
                   setActiveTab("gallery")
                   setIsMobileMenuOpen(false)
                 }}
-                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "gallery"
-                    ? "bg-primary-foreground text-primary"
-                    : "text-primary-foreground/90 hover:bg-primary-foreground/10"
-                }`}
+                className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${activeTab === "gallery"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90 hover:bg-primary-foreground/10"
+                  }`}
               >
                 Gallery & Images
               </button>
@@ -594,11 +587,10 @@ export default function AdminDashboard() {
                     setActiveTab("admins")
                     setIsMobileMenuOpen(false)
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${
-                    activeTab === "admins"
-                      ? "bg-primary-foreground text-primary"
-                      : "text-primary-foreground/90 hover:bg-primary-foreground/10"
-                  }`}
+                  className={`w-full text-left px-4 py-3 rounded-md font-medium transition-all duration-300 ${activeTab === "admins"
+                    ? "bg-primary-foreground text-primary"
+                    : "text-primary-foreground/90 hover:bg-primary-foreground/10"
+                    }`}
                 >
                   Admin Management
                 </button>
@@ -860,9 +852,8 @@ export default function AdminDashboard() {
                   <p className="text-sm text-muted-foreground mt-4">{event.description}</p>
 
                   <span
-                    className={`inline-block mt-4 px-3 py-1 rounded-full text-xs font-medium ${
-                      event.isPast ? "bg-gray-500 text-white" : "bg-green-500 text-white"
-                    }`}
+                    className={`inline-block mt-4 px-3 py-1 rounded-full text-xs font-medium ${event.isPast ? "bg-gray-500 text-white" : "bg-green-500 text-white"
+                      }`}
                   >
                     {event.isPast ? "PAST EVENT" : "UPCOMING"}
                   </span>
@@ -943,51 +934,46 @@ export default function AdminDashboard() {
             <div className="mb-6 flex gap-2 flex-wrap">
               <button
                 onClick={() => setGalleryFilter("all")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  galleryFilter === "all"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${galleryFilter === "all"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
               >
                 All Images ({gallery.length})
               </button>
               <button
                 onClick={() => setGalleryFilter("carousel")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  galleryFilter === "carousel"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${galleryFilter === "carousel"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
               >
                 Carousels ({gallery.filter((img) => img.type === "carousel").length})
               </button>
               <button
                 onClick={() => setGalleryFilter("banner")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  galleryFilter === "banner"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${galleryFilter === "banner"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
               >
                 Banners ({gallery.filter((img) => img.type === "banner").length})
               </button>
               <button
                 onClick={() => setGalleryFilter("gallery")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  galleryFilter === "gallery"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${galleryFilter === "gallery"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
               >
                 Gallery ({gallery.filter((img) => img.type === "gallery").length})
               </button>
               <button
                 onClick={() => setGalleryFilter("exhibitor")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  galleryFilter === "exhibitor"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${galleryFilter === "exhibitor"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
               >
                 Exhibitor Logos ({gallery.filter((img) => img.type === "exhibitor").length})
               </button>
@@ -1085,9 +1071,8 @@ export default function AdminDashboard() {
                       <div className="flex items-center gap-3 mb-3">
                         <h3 className="font-serif text-xl">{admin.username}</h3>
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            admin.role === "main" ? "bg-purple-500 text-white" : "bg-blue-500 text-white"
-                          }`}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${admin.role === "main" ? "bg-purple-500 text-white" : "bg-blue-500 text-white"
+                            }`}
                         >
                           {admin.role === "main" ? "MAIN ADMIN" : "REGULAR ADMIN"}
                         </span>
