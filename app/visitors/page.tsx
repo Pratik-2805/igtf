@@ -21,28 +21,28 @@ export default function VisitorsPage() {
                 <h3 className="font-serif text-2xl">For Trade Buyers</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Source directly from 400+ manufacturers and exporters
                       across 16 industry sectors
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Discover new products, innovations, and cutting-edge
                       solutions for your business
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Network with industry leaders and establish valuable
                       business partnerships
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Compare prices, quality, and terms from multiple suppliers
                       in one location
@@ -57,26 +57,26 @@ export default function VisitorsPage() {
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Stay updated with the latest industry trends and market
                       insights
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Attend seminars and workshops by industry experts
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Explore career opportunities and business collaborations
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
                       Connect with global trade professionals from 40+ countries
                     </span>
